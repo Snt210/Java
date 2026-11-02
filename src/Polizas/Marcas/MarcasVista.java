@@ -11,7 +11,8 @@ import javax.swing.JTextField;
 
 public class MarcasVista extends JPanel {
 
-    protected JButton btn1, btn_a;
+    // Botones: consultar, agregar, modificar, eliminar
+    protected JButton btn1, btn_a, btn_m, btn_e;
     protected JTextField txt1;
     protected JLabel lbl1, lbl2;
 
@@ -26,10 +27,10 @@ public class MarcasVista extends JPanel {
         lbl1 = new JLabel("Welcome to Marcas Admin.");
         lbl1.setBounds(350, 5, 200, 30);
 
-        lbl2 = new JLabel("Ingresa tu nombre: ");
+        lbl2 = new JLabel("Ingresa la marca: ");
         lbl2.setBounds(50, 40, 150, 30);
 
-        txt1 = new JTextField("Marca 1");
+        txt1 = new JTextField();
         txt1.setBounds(170, 40, 250, 30);
 
         cmbMarcas = new JComboBox<>();
@@ -40,6 +41,12 @@ public class MarcasVista extends JPanel {
 
         btn_a = new JButton("Agregar");
         btn_a.setBounds(250, 90, 100, 30);
+
+        btn_m = new JButton("Modificar");
+        btn_m.setBounds(350, 90, 100, 30);
+
+        btn_e = new JButton("Eliminar");
+        btn_e.setBounds(450, 90, 100, 30);
 
         marcasModelo = new MarcasTM();
         tabla = new JTable(marcasModelo);
@@ -52,9 +59,12 @@ public class MarcasVista extends JPanel {
         add(cmbMarcas);
         add(btn1);
         add(btn_a);
+        add(btn_m);
+        add(btn_e);
         add(sc);
     }
 
+    // Refresca la tabla y el combo con la lista que le pases
     public void actualizarVista(List<Marca> lista) {
         marcasModelo.vaciarLista();
         marcasModelo.llenar(lista);

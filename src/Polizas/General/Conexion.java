@@ -7,21 +7,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Conexion {
+
     public Connection cnx;
     public PreparedStatement ps;
     public ResultSet rs;
 
     public void conectar() {
         try {
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost/polizas", "root", "");
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/polizas", "root", "");
         } catch (SQLException e) {
-            System.out.println("Error de conexión");
+            System.out.println("Error de conexión: " + e.getMessage());
         }
     }
 
-    void close() {
+    public void close() {
         try {
-            if(cnx != null) cnx.close();
+            cnx.close();
         } catch (SQLException ex) {
             System.out.println("Error: " + ex.getMessage());
         }

@@ -2,9 +2,9 @@ package Polizas.General;
 
 import java.util.List;
 
-public abstract interface DAO {
+public interface DAO {
     int create(Object obj);
     List read();
-    int update(Object lista);
+    int update(Object obj);
     int delete(Object obj);
 }
